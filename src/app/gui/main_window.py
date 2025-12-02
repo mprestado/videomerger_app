@@ -255,8 +255,12 @@ class MainWindow:
                 ],
                 expand=True,
             ),
-            self.next_button,  # Fixed position overlay
         ]
+
+        # Only show the Next button if not on the final Save/Upload step
+        if self.current_step < 2:
+            stack_children.append(self.next_button)
+
         if self.current_step > 0:
             stack_children.append(self.back_button)  # Show back button only if not at first step
         return ft.Stack(
